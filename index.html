@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en"  dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>کافه راش</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #7c7b79; /* Light cream background */
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #ecdb25; /* Green header background */
+            color: rgb(0, 0, 0);
+            text-align: center;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+        }
+
+        .logo {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .menu-container {
+            padding: 20px;
+        }
+
+        .menu-title {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #ecdb25; /* Green title color */
+        }
+
+        .menu-item {
+            margin-bottom: 12px;
+            background-color: rgb(197, 197, 197);
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease;
+        }
+
+        .menu-item:hover {
+            background-color: #898989; /* Light gray on hover */
+        }
+
+        .menu-item-name {
+            font-weight: bold;
+            color: rgb(0, 0, 0);
+        }
+
+        .menu-item-price {
+            color: #000000; /* Green price color */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="C:\Users\Morvarid\Downloads\dsds.jpeg" alt="Coffee Shop Logo" class="logo"> <!-- Add your logo here -->
+        <h1>کافه راش</h1>
+    </header>
+
+    <div class="menu-container" id="menu-container">
+        <!-- Menu items will be dynamically added here -->
+    </div>
+
+    <script>
+        // Define the menu data as a JSON variable
+        var coffeeMenu = {
+            "نوشیدنی گرم": [
+                {"name": "اسپرسو تک", "price": "$15.000"},
+                {"name": "دابل اسپرسوt", "price": "$45.000"}
+            ],
+            "نوشیدنی سرد": [
+                {"name": "کریستینا", "price": "$400.000"},
+                {"name": "هپ بورن", "price": "$500.000"}
+            ],
+            "نمیدانم": [
+                {"name": "اطلاعی ندارن", "price": "$35.000"},
+                {"name": "هیچ", "price": "$450.000"},
+                {"name": "نمیدانم", "price": "$505.000"}
+            ]
+            // Add more menu items as needed
+        };
+
+        // Function to dynamically generate the menu HTML
+        function generateMenu() {
+            var container = document.getElementById("menu-container");
+
+            for (var title in coffeeMenu) {
+                var menuTitle = document.createElement("div");
+                menuTitle.className = "menu-title";
+                menuTitle.textContent = title;
+                container.appendChild(menuTitle);
+
+                coffeeMenu[title].forEach(function(item) {
+                    var menuItem = document.createElement("div");
+                    menuItem.className = "menu-item";
+                    
+                    var itemName = document.createElement("div");
+                    itemName.className = "menu-item-name";
+                    itemName.textContent = item.name;
+                    menuItem.appendChild(itemName);
+
+                    var itemPrice = document.createElement("div");
+                    itemPrice.className = "menu-item-price";
+                    itemPrice.textContent = item.price;
+                    menuItem.appendChild(itemPrice);
+
+                    container.appendChild(menuItem);
+                });
+            }
+        }
+
+        // Call the function to generate the menu on page load
+        window.onload = generateMenu;
+    </script>
+</body>
+</html>
